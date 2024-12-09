@@ -1,0 +1,104 @@
+:root {
+  --chai-gold: #C5B488;
+  --chai-dark: #333333;
+  --chai-gray: #666666;
+  --chai-light: #F8F8F8;
+}
+
+.chai-calculator {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .input-section {
+    margin: 20px 0;
+  }
+  
+  .input-section input {
+    margin-left: 10px;
+    padding: 5px;
+    width: 60px;
+  }
+  
+  .recipe-results {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .recipe-results ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .recipe-results li {
+    margin: 10px 0;
+  }
+
+  .card {
+    border-radius: 20px;
+    border: none;
+    background: var(--chai-light);
+  }
+
+  .brand-logo {
+    width: 80px;
+    margin-bottom: 1rem;
+  }
+
+  .hindi-text {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    color: var(--chai-gray);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .main-title {
+    color: var(--chai-dark);
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: var(--chai-gray);
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .form-control {
+    max-width: 120px;
+    border: 2px solid var(--chai-gold);
+    border-radius: 10px;
+  }
+
+  .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(197, 180, 136, 0.25);
+    border-color: var(--chai-gold);
+  }
+
+  .recipe-badge {
+    background: var(--chai-gray) !important;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .recipe-badge:hover {
+    background: var(--chai-dark) !important;
+    transition: background-color 0.3s ease;
+  }
+
+  .list-group-item {
+    border-color: rgba(197, 180, 136, 0.2);
+    padding: 1rem;
+  }
+
+  .list-group-item i {
+    color: var(--chai-gold);
+  }
+
+  .badge.bg-secondary {
+    background-color: #6c757d !important;
+  }
