@@ -1,13 +1,14 @@
 import React from "react";
 import teapot from "../assets/teapotBeige.svg";
+import "./Header.css";
 
 const Header = () => {
   return (
-    <header>
-    <img src={teapot} alt="Teapot" style={{ width: "100px", marginBottom: "10px" }} />
-      <h1>ChaiPour</h1>
+    <header className="header">
+      <img src={teapot} alt="Teapot" className="logo" />
+      <h1>Chaipour</h1>
       <h2>Speciality Indian Tea</h2>
-      <p>विशेष भारतीय चाय</p>
+      <p className="hindi-text">विशेष भारतीय चाय</p>
     </header>
   );
 };

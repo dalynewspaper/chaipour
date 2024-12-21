@@ -1,46 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Karma:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500&display=swap');
+
+:root {
+  --chai-gold: #D4B78A;
+  --chai-dark: #2C2420;
+  --chai-gray: #8A8178;
+  --chai-cream: #FFF6E9;
+  --chai-light: #FDFBF8;
+  --chai-accent: #BA8B4E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  background-color: #f5f5f5;
-  color: #333;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(
+    170deg, 
+    var(--chai-cream) 0%,
+    #FFFFFF 100%
+  );
   min-height: 100vh;
-  padding: 20px;
-}
-
-header img {
-  display: block;
-  margin: 0 auto;
-}
-
-header h1 {
   font-family: 'Karma', serif;
-  font-size: 3rem;
+  color: var(--chai-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 769px) {
+  .app {
+    padding: 2rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    padding: 2rem;
+  }
+}
+
+/* Improve touch targets on mobile */
+input[type="number"] {
+  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
-  color: #4a4a4a;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
-header h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.5rem;
-  color: #777;
-  margin-top: 10px;
-}
-
-.card-title.text-center {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.5rem;
-  color: #777;
-}
-
-p {
-  margin: 20px 0;
-  font-size: 1rem;
+/* Add better tap targets for mobile */
+.recipe-item {
+  min-height: 44px;
 }

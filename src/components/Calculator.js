@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./Calculator.css";
+import { motion } from 'framer-motion';
 
 const Calculator = () => {
   const [cups, setCups] = useState(1);
-  const [sugarLevel, setSugarLevel] = useState("normal");
 
   const baseRecipe = {
-    water: 110,
-    milk: 100,
+    water: 220,
+    milk: 120,
     chaiMix: 8,
     sugar: 5,
   };
@@ -38,67 +38,81 @@ const Calculator = () => {
 
   const instructions = generateInstructions();
 
+  const handleNumberChange = (value) => {
+    const newValue = Math.max(1, value); // Ensure minimum of 1
+    setCups(newValue);
+  };
+
   return (
     <div className="container py-5">
       <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card shadow-sm">
-            <div className="card-body">
-              <h2 className="card-title text-center mb-4">How to make Masala Chai</h2>
-              <p className="text-center mb-4">Using ChaiPour Speciality Masala Chai Mix</p>
-              
-              <div className="mb-4">
-                <label className="form-label">
-                  Number of Cups
-                  <input
-                    type="number"
-                    className="form-control mt-2"
-                    min="1"
-                    value={cups}
-                    onChange={(e) => setCups(Math.max(1, parseInt(e.target.value) || 1))}
-                    aria-label="Number of Cups"
-                  />
-                </label>
-              </div>
-
-              <div className="card bg-light mb-4">
-                <div className="card-body">
-                  <h3 className="card-title h5 mb-3">Recipe Results</h3>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      <span><i className="bi bi-droplet-fill me-2"></i>Water</span>
-                      <span className="badge bg-secondary rounded-pill">{ingredients.water}ml</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      <span><i className="bi bi-cup-fill me-2"></i>Milk</span>
-                      <span className="badge bg-secondary rounded-pill">{ingredients.milk}ml</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      <span><i className="bi bi-box-fill me-2"></i>Chai Mix</span>
-                      <span className="badge bg-secondary rounded-pill">{ingredients.chaiMix}g</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      <span><i className="bi bi-cup-straw me-2"></i>Sugar</span>
-                      <span className="badge bg-secondary rounded-pill">{ingredients.sugar}g</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="card bg-light">
-                <div className="card-body">
-                  <h3 className="card-title h5 mb-3">Instructions</h3>
-                  <ol className="list-group list-group-numbered">
-                    {instructions.map((step, index) => (
-                      <li key={index} className="list-group-item">
-                        {step}
-                      </li>
-                    ))}
-                  </ol>
-                </div>
+        <div className="col-md-12">
+          <motion.div 
+            className="calculator"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
+            <h3>How to make Masala Chai</h3>
+            <p className="subtitle">Using Chaipour's Speciality Masala Chai Mix</p>
+            
+            <div className="input-section">
+              <label>Number of Cups</label>
+              <div className="number-input">
+                <button 
+                  className="number-button"
+                  onClick={() => handleNumberChange(cups - 1)}
+                  aria-label="Decrease cups"
+                >
+                  −
+                </button>
+                <input
+                  type="number"
+                  min="1"
+                  value={cups}
+                  onChange={(e) => handleNumberChange(parseInt(e.target.value) || 1)}
+                  onFocus={(e) => e.target.select()}  // Selects all text when focused
+                  aria-label="Number of Cups"
+                />
+                <button 
+                  className="number-button"
+                  onClick={() => handleNumberChange(cups + 1)}
+                  aria-label="Increase cups"
+                >
+                  +
+                </button>
               </div>
             </div>
-          </div>
+
+            <div className="recipe-results">
+              <h4>Recipe Results</h4>
+              <div className="recipe-item">
+                <span>Water</span>
+                <div className="amount">{ingredients.water}ml</div>
+              </div>
+              <div className="recipe-item">
+                <span>Milk</span>
+                <div className="amount">{ingredients.milk}ml</div>
+              </div>
+              <div className="recipe-item">
+                <span>Chai Mix</span>
+                <div className="amount">{ingredients.chaiMix}g</div>
+              </div>
+              <div className="recipe-item">
+                <span>Sugar</span>
+                <div className="amount">{ingredients.sugar}g</div>
+              </div>
+            </div>
+
+            <div className="instructions">
+              <h4>Instructions</h4>
+              <ol>
+                {instructions.map((step, index) => (
+                  <li key={index}>{step}</li>
+                ))}
+              </ol>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>
